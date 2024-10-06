@@ -1,12 +1,28 @@
-import 'package:alif/presentation/auth/retrieve_password_screen.dart';
-import 'package:alif/presentation/auth/login_screen.dart';
-import 'package:alif/presentation/auth/register_screen.dart';
+import 'package:alif/presentation/auth/retrieve_password/retrieve_password_screen.dart';
+import 'package:alif/presentation/auth/login/login_screen.dart';
+import 'package:alif/presentation/auth/register/register_screen.dart';
 import 'package:alif/presentation/home/main_screen.dart';
+import 'package:alif/utils/dependency_injection.dart';
+import 'package:alif/utils/style/colors.dart';
 import 'package:alif/utils/style/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
+  DependencyInjection.init();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: AppColors.secondary,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -17,11 +33,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Alif',
-      initialRoute: "/main",
+      initialRoute: "/login",
       routes: {
-        '/main': (contex) => const MainScreen(),
-        '/login': (contex) => const LoginScreen(),
-        '/register': (contex) => const RegisterScreen(),
+        '/main': (contex) => MainScreen(),
+        '/login': (contex) => LoginScreen(),
+        '/register': (contex) => RegisterScreen(),
         '/retrieve': (contex) => const RetrievePasswordScreen(),
       },
       locale: const Locale('ar'),
@@ -34,6 +50,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       theme: AppTheme.theme,
+      debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
     );
   }

@@ -7,6 +7,7 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: "Urbanist",
       colorScheme: AppColorScheme.colorScheme,
+      dividerTheme: DividerThemeData(color: AppColors.onSurfaceVariant),
       inputDecorationTheme: AppInputDecoration.theme,
       elevatedButtonTheme: AppElevatedButton.themeData,
       outlinedButtonTheme: AppOutlinedButton.themeData,
@@ -50,11 +51,14 @@ class AppOutlinedButton {
       style: OutlinedButton.styleFrom(
         elevation: 0,
         padding: EdgeInsetsDirectional.zero,
-        foregroundColor: AppColors.secondary,
         surfaceTintColor: AppColors.transparent,
-        backgroundColor: AppColors.onSecondary,
+        foregroundColor: AppColors.onSurface,
+        disabledForegroundColor: AppColors.onSurface,
+        disabledBackgroundColor: AppColors.surface,
+        backgroundColor: AppColors.secondary,
         minimumSize: const Size.fromHeight(70),
         shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1, color: AppColors.primary),
           borderRadius: BorderRadius.circular(16),
         ),
       ),
@@ -83,18 +87,19 @@ class AppInputDecoration {
   static InputDecorationTheme get theme {
     return InputDecorationTheme(
       filled: true,
-      fillColor: AppColors.onSecondary,
+      fillColor: AppColors.surface,
+      suffixIconColor: AppColors.onSurfaceVariant,
       // contentPadding: EdgeInsetsDirectional.zero,
       constraints: const BoxConstraints(minHeight: 56),
       border: OutlineInputBorder(
         borderSide: const BorderSide(
-          color: AppColors.onSurface,
+          color: AppColors.onSecondary,
         ),
         borderRadius: BorderRadius.circular(12),
       ),
       enabledBorder: OutlineInputBorder(
         borderSide: const BorderSide(
-          color: AppColors.onSurface,
+          color: AppColors.onSecondary,
         ),
         borderRadius: BorderRadius.circular(12),
       ),
@@ -119,6 +124,7 @@ class AppColorScheme {
       surface: AppColors.surface,
       onSurface: AppColors.onSurface,
       onSurfaceVariant: AppColors.onSurfaceVariant,
+      outline: AppColors.onSurface,
       //tertiary: AppColors.tertiary,
       //onTertiary: AppColors.onTertiary,
       error: AppColors.error,

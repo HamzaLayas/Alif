@@ -9,12 +9,16 @@ class CustomAuthScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final paddingTop = MediaQuery.of(context).viewPadding.top;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 250, 250, 250),
-      appBar: AppBar(
-        surfaceTintColor: AppColors.transparent,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(110),
+      backgroundColor: AppColors.secondary,
+      resizeToAvoidBottomInset: false,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(height * 0.1125),
+        child: Container(
+          margin: EdgeInsetsDirectional.only(top: paddingTop),
+          alignment: AlignmentDirectional.center,
           child: CustomGradientShader(
             child: RichText(
                 text: TextSpan(
@@ -22,17 +26,17 @@ class CustomAuthScaffold extends StatelessWidget {
                 WidgetSpan(
                   child: SvgPicture.asset(
                     "lib/assets/svg/alf.svg",
-                    width: 125,
-                    height: 125,
+                    fit: BoxFit.fitHeight,
+                    height: height * 0.1125,
                   ),
                 ),
                 TextSpan(
                   text: 'لِفْ',
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                        fontSize: 125,
+                        fontSize: height * 0.1,
                         fontFamily: "Lalezra",
                         fontWeight: FontWeight.bold,
-                        color: AppColors.onSecondary,
+                        color: AppColors.surface,
                       ),
                 ),
               ],

@@ -12,14 +12,12 @@ class CustomElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      focusColor: AppColors.secondary,
-      splashColor: AppColors.secondary,
-      highlightColor: AppColors.secondary,
-      borderRadius: BorderRadius.circular(16),
-      onTap: onTap,
-      child: AspectRatio(
-        aspectRatio: 335 / 58,
+    return AspectRatio(
+      aspectRatio: 335 / 55,
+      child: InkWell(
+        splashColor: AppColors.onSecondary,
+        borderRadius: BorderRadius.circular(16),
+        onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -35,8 +33,8 @@ class CustomElevatedButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  color: AppColors.onSecondary, fontWeight: FontWeight.w600),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                  color: AppColors.surface, fontWeight: FontWeight.w600),
             ),
           ),
         ),

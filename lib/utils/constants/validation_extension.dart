@@ -5,8 +5,10 @@ extension Validations on String {
   }
 
   emailValidation() {
+    final pattren = RegExp(
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
     if (isEmpty) return "الرجاء إدخال بريد إلكتروني صالح";
-    if (!contains('@')) return "الرجاء إدخال بريد إلكتروني صالح";
+    if (!contains('@') || !pattren.hasMatch(this)) return "الرجاء إدخال بريد إلكتروني صالح";
 
     return null;
   }

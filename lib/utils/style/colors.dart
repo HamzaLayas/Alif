@@ -5,10 +5,10 @@ class AppColors {
   static const brightness = Brightness.light;
   static const primary = Color(0xFF4EC1FF);
   static const onPrimary = Color(0xFF2D8DFF);
-  static const secondary = Color(0xFF000000);
-  static const onSecondary = Color(0xFFFFFFFF);
-  static const surface = Color(0xFFFAFAFA);
-  static const onSurface = Color(0xFFE4DFDF);
+  static const surface = Color(0xFFFFFFFF);
+  static const onSurface = Color(0xFF000000);
+  static const secondary = Color(0xFFFAFAFA);
+  static const onSecondary = Color(0xFFE4DFDF);
   static const onSurfaceVariant = Color(0xFF807A7A);
   //static const tertiary = Color(0xFF1C5850);
   //static const onTertiary = Color(0xFF0B302B);
