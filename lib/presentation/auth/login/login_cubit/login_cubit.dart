@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -41,8 +42,8 @@ class LoginCubit extends Cubit<LoginState> {
       );
       if (res != null) {
         if (res.statusCode == HttpStatus.ok) {
-          emit(LoginSuccess());
           Future.delayed(Duration(seconds: 2));
+          emit(LoginSuccess());
         } else {
           emit(LoginFailure(error: res.data['message']));
         }

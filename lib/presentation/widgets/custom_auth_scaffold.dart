@@ -15,7 +15,7 @@ class CustomAuthScaffold extends StatelessWidget {
       backgroundColor: AppColors.secondary,
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(height * 0.1125),
+        preferredSize: Size.fromHeight(height * 0.125),
         child: Container(
           margin: EdgeInsetsDirectional.only(top: paddingTop),
           alignment: AlignmentDirectional.center,

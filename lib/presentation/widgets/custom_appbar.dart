@@ -1,3 +1,4 @@
+import 'package:alif/data/models/user_model.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +7,11 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomeAppBar({
     super.key,
     required this.height,
+    required this.currentUser,
     required this.child,
   });
   final double height;
+  final UserModel? currentUser;
   final Widget child;
 
   @override
@@ -53,18 +56,20 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 leading: AspectRatio(
                   aspectRatio: 1,
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: AppColors.transparent,
                       shape: BoxShape.circle,
+                      border: Border.all(width: 1, color: AppColors.surface),
                     ),
                     child: ClipOval(
                       child: CachedNetworkImage(
-                        imageUrl: "",
+                        imageUrl: currentUser?.image ?? '',
                         fit: BoxFit.fitWidth,
                         alignment: Alignment.center,
-                        placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                              color: AppColors.surface),
+                        placeholder: (context, url) => Image.asset(
+                          "lib/assets/images/profile.jpg",
+                          fit: BoxFit.fitWidth,
+                          alignment: AlignmentDirectional.center,
                         ),
                         errorWidget: (context, url, error) => Image.asset(
                           "lib/assets/images/profile.jpg",
@@ -83,7 +88,7 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                       .copyWith(color: AppColors.surface),
                 ),
                 subtitle: Text(
-                  "حمزة لياس",
+                  currentUser?.name ?? "زائر",
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
@@ -99,20 +104,19 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-            // Row(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   mainAxisAlignment: MainAxisAlignment.end,
-            //   children: [
-            //     IconButton(
-            //         onPressed: () {},
-            //         icon: Icon(
-            //           size: height * 0.03,
-            //           Icons.notifications_none_outlined,
-            //           color: AppColors.onSecondary,
-            //         ))
-            //   ],
-            // ),
-            child
+            Container(
+              width: double.infinity,
+              height: height * 0.060,
+              margin: EdgeInsetsDirectional.symmetric(horizontal: width * 0.05)
+                  .copyWith(top: height * 0.005),
+              padding:
+                  EdgeInsetsDirectional.symmetric(horizontal: width * 0.0125),
+              decoration: BoxDecoration(
+                color: AppColors.surface.withOpacity(0.35),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: child,
+            ),
           ],
         ),
       ),
@@ -120,5 +124,5 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(height * 0.125);
+  Size get preferredSize => Size.fromHeight(height * 0.15);
 }
