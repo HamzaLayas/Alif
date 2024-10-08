@@ -13,3 +13,11 @@ final class RegisterFailure extends RegisterState {
   final String error;
   RegisterFailure({required this.error});
 }
+
+final class RegisterPasswordObscured extends RegisterState {}
+
+final class RegisterPasswordVisible extends RegisterState {}
+
+final class RegisterConfirmPasswordObscured extends RegisterState {}
+
+final class RegisterConfirmPasswordVisible extends RegisterState {}

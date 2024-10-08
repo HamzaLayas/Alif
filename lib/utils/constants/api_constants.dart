@@ -5,5 +5,4 @@ class ApiConstants {
   String imagePath(String url){
     return imageUrl + url;
   }
-
 }

@@ -13,7 +13,14 @@ class UserCubit extends Cubit<UserState> {
   final _userRepo = GetIt.I.get<UserRepo>();
 
   Future<UserModel?> getUserData() async {
-  currentUser =  await _userRepo.getUserData();
-  return currentUser;
+    currentUser = await _userRepo.getUserData();
+    return currentUser;
+  }
+
+  Future<UserModel?> updateUserData() async {
+    emit(UserLoading());
+    currentUser = await _userRepo.getUserData();
+    emit(UserLoaded());
+    return currentUser;
   }
 }

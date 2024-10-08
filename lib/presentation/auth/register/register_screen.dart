@@ -5,6 +5,7 @@ import 'package:alif/presentation/widgets/custom_gradient_shader.dart';
 import 'package:alif/presentation/widgets/show_error.dart';
 import 'package:alif/presentation/widgets/show_loading_dialog.dart';
 import 'package:alif/utils/constants/validation_extension.dart';
+import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,7 +82,7 @@ class RegisterScreenView extends StatelessWidget {
                           .titleLarge!
                           .copyWith(color: AppColors.onSurfaceVariant),
                       prefixIcon: const Icon(
-                        Icons.person_2_outlined,
+                        AlifIcons.user_outline,
                         size: 30,
                       ),
                     ),
@@ -106,7 +107,7 @@ class RegisterScreenView extends StatelessWidget {
                             .titleLarge!
                             .copyWith(color: AppColors.onSurfaceVariant),
                         prefixIcon: const Icon(
-                          Icons.email_outlined,
+                          AlifIcons.mail,
                           size: 30,
                         ),
                       ),
@@ -129,7 +130,7 @@ class RegisterScreenView extends StatelessWidget {
                           .titleLarge!
                           .copyWith(color: AppColors.onSurfaceVariant),
                       prefixIcon: const Icon(
-                        Icons.password_rounded,
+                        AlifIcons.password,
                         size: 30,
                       ),
                       suffixIcon: InkWell(
@@ -137,9 +138,7 @@ class RegisterScreenView extends StatelessWidget {
                         splashColor: AppColors.secondary,
                         borderRadius: BorderRadius.circular(50),
                         child: Icon(
-                          cubit.isPasswordObscured
-                              ? Icons.lock_outline_rounded
-                              : Icons.lock_open_rounded,
+                          cubit.passwordIcon,
                           size: 30,
                         ),
                       ),
@@ -167,7 +166,7 @@ class RegisterScreenView extends StatelessWidget {
                               .titleLarge!
                               .copyWith(color: AppColors.onSurfaceVariant),
                           prefixIcon: const Icon(
-                            Icons.password_rounded,
+                            AlifIcons.password,
                             size: 30,
                           ),
                           suffixIcon: InkWell(
@@ -175,9 +174,7 @@ class RegisterScreenView extends StatelessWidget {
                             splashColor: AppColors.secondary,
                             borderRadius: BorderRadius.circular(50),
                             child: Icon(
-                              cubit.isConfirmObscured
-                                  ? Icons.lock_outline_rounded
-                                  : Icons.lock_open_rounded,
+                              cubit.confirmPasswordIcon,
                               size: 30,
                             ),
                           ),
@@ -205,7 +202,7 @@ class RegisterScreenView extends StatelessWidget {
                           .titleLarge!
                           .copyWith(color: AppColors.onSurfaceVariant),
                       prefixIcon: const Icon(
-                        Icons.phone_outlined,
+                        AlifIcons.phone_outline,
                         size: 30,
                       ),
                     ),

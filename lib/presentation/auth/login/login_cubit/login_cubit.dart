@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:alif/data/repositories/auth_repo.dart';
+import 'package:alif/utils/style/alif_icons.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,15 +18,15 @@ class LoginCubit extends Cubit<LoginState> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool isObscured = true;
-  IconData passwordIcon = Icons.lock_outline_rounded;
+  IconData passwordIcon = AlifIcons.eye_off;
 
   obscureToggle() {
     isObscured = !isObscured;
     if (isObscured) {
-      passwordIcon = Icons.lock_outline_rounded;
+      passwordIcon = AlifIcons.eye_off;
       emit(LoginPasswordObscured());
     } else {
-      passwordIcon = Icons.lock_open_rounded;
+      passwordIcon = AlifIcons.eye;
       emit(LoginPasswordVisible());
     }
   }

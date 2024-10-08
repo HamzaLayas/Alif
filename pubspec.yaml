@@ -79,6 +79,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: AlifIcons
+      fonts:
+        - asset: lib\utils\style\fonts\AlifIcons.ttf
+
     - family: Lalezar
       fonts:
         - asset: lib\utils\style\fonts\Lalezar-Regular.ttf

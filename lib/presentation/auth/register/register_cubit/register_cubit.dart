@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:alif/data/repositories/auth_repo.dart';
+import 'package:alif/utils/style/alif_icons.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,14 +21,30 @@ class RegisterCubit extends Cubit<RegisterState> {
   final confirmPasswordController = TextEditingController();
 
   bool isPasswordObscured = true;
+  IconData passwordIcon = AlifIcons.eye_off;
   bool isConfirmObscured = true;
+  IconData confirmPasswordIcon = AlifIcons.eye_off;
 
   obscurePasswordToggle() {
     isPasswordObscured = !isPasswordObscured;
+    if (isPasswordObscured) {
+      passwordIcon = AlifIcons.eye_off;
+      emit(RegisterPasswordObscured());
+    } else {
+      passwordIcon = AlifIcons.eye;
+      emit(RegisterPasswordVisible());
+    }
   }
 
   obscureConfirmToggle() {
     isConfirmObscured = !isConfirmObscured;
+    if (isConfirmObscured) {
+      confirmPasswordIcon = AlifIcons.eye_off;
+      emit(RegisterConfirmPasswordObscured());
+    } else {
+      confirmPasswordIcon = AlifIcons.eye;
+      emit(RegisterConfirmPasswordVisible());
+    }
   }
 
   register() async {

@@ -8,16 +8,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'main_state.dart';
 
 class MainCubit extends Cubit<MainState> {
-  MainCubit() : super(MainInitial());
+  MainCubit() : super(MainInitial()) {
+    emit(HomePageState());
+  }
 
-  int selectedPage = 2;
+  int selectedPage = 0;
 
-  final PageController pageController = PageController(initialPage: 2);
+  final PageController pageController = PageController(initialPage: 0);
 
   final List<Widget> pages = [
-    ExplorePage(),
-    TicketsPage(),
     HomePage(),
+    TicketsPage(),
+    ExplorePage(),
     SavedPage(),
     ProfilePage(),
   ];
@@ -28,11 +30,11 @@ class MainCubit extends Cubit<MainState> {
       pageController.jumpToPage(page);
       switch (page) {
         case 0:
-          emit(ExplorePageState());
+          emit(HomePageState());
         case 1:
           emit(TicketsPageState());
         case 2:
-          emit(HomePageState());
+          emit(ExplorePageState());
         case 3:
           emit(SavedPageState());
         case 4:

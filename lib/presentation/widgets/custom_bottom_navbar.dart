@@ -1,4 +1,5 @@
 import 'package:alif/presentation/widgets/custom_gradient_shader.dart';
+import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class CustomBotNavBar extends StatelessWidget {
         ],
       ),
       child: ClipRRect(
-       borderRadius: const BorderRadiusDirectional.only(
+        borderRadius: const BorderRadiusDirectional.only(
           topStart: Radius.circular(38),
           topEnd: Radius.circular(38),
         ),
@@ -54,6 +55,26 @@ class CustomBotNavBar extends StatelessWidget {
           currentIndex: selectedPage,
           items: const [
             BottomNavigationBarItem(
+              label: "Home",
+              backgroundColor: AppColors.transparent,
+              activeIcon: CustomGradientShader(
+                child: Icon(AlifIcons.home),
+              ),
+              icon: CustomGradientShader(
+                child: Icon(AlifIcons.home_outlined),
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: "Tickets",
+              backgroundColor: AppColors.transparent,
+              activeIcon: CustomGradientShader(
+                child: Icon(AlifIcons.ticket),
+              ),
+              icon: CustomGradientShader(
+                child: Icon(AlifIcons.ticket_outlined),
+              ),
+            ),
+            BottomNavigationBarItem(
               label: "Explore",
               backgroundColor: AppColors.transparent,
               activeIcon: CustomGradientShader(
@@ -64,43 +85,23 @@ class CustomBotNavBar extends StatelessWidget {
               ),
             ),
             BottomNavigationBarItem(
-              label: "Tickets",
-              backgroundColor: AppColors.transparent,
-              activeIcon: CustomGradientShader(
-                child: Icon(Icons.airplane_ticket),
-              ),
-              icon: CustomGradientShader(
-                child: Icon(Icons.airplane_ticket_outlined),
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: "Home",
-              backgroundColor: AppColors.transparent,
-              activeIcon: CustomGradientShader(
-                child: Icon(Icons.home_rounded),
-              ),
-              icon: CustomGradientShader(
-                child: Icon(Icons.home_outlined),
-              ),
-            ),
-            BottomNavigationBarItem(
               label: "Saved",
               backgroundColor: AppColors.transparent,
               activeIcon: CustomGradientShader(
-                child: Icon(Icons.favorite_rounded),
+                child: Icon(AlifIcons.saved),
               ),
               icon: CustomGradientShader(
-                child: Icon(Icons.favorite_outline_rounded),
+                child: Icon(AlifIcons.saved_outlined),
               ),
             ),
             BottomNavigationBarItem(
               label: "Profile",
               backgroundColor: AppColors.transparent,
               activeIcon: CustomGradientShader(
-                child: Icon(Icons.person_2_rounded),
+                child: Icon(AlifIcons.user),
               ),
               icon: CustomGradientShader(
-                child: Icon(Icons.person_2_outlined),
+                child: Icon(AlifIcons.user_outline),
               ),
             ),
           ],

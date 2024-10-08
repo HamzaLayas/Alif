@@ -5,6 +5,7 @@ import 'package:alif/presentation/widgets/custom_gradient_shader.dart';
 import 'package:alif/presentation/widgets/show_error.dart';
 import 'package:alif/presentation/widgets/show_loading_dialog.dart';
 import 'package:alif/utils/constants/validation_extension.dart';
+import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,7 +82,7 @@ class LoginScreenView extends StatelessWidget {
                           .titleLarge!
                           .copyWith(color: AppColors.onSurfaceVariant),
                       prefixIcon: const Icon(
-                        Icons.email_outlined,
+                        AlifIcons.mail,
                         size: 30,
                       ),
                     ),
@@ -106,7 +107,7 @@ class LoginScreenView extends StatelessWidget {
                               .titleLarge!
                               .copyWith(color: AppColors.onSurfaceVariant),
                           prefixIcon:
-                              const Icon(Icons.password_rounded, size: 30),
+                              const Icon(AlifIcons.password, size: 30),
                           suffixIcon: InkWell(
                             onTap: () => cubit.obscureToggle(),
                             splashColor: AppColors.secondary,
