@@ -14,7 +14,6 @@ class ExplorePage extends StatelessWidget {
       backgroundColor: AppColors.secondary,
       appBar: CustomeAppBar(
         height: height,
-        currentUser: null,
         child: SizedBox.shrink(),
       ),
       body: const Placeholder(),

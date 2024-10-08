@@ -2,6 +2,7 @@ import 'package:alif/presentation/auth/retrieve_password/retrieve_password_scree
 import 'package:alif/presentation/auth/login/login_screen.dart';
 import 'package:alif/presentation/auth/register/register_screen.dart';
 import 'package:alif/presentation/home/main_screen/main_screen.dart';
+import 'package:alif/presentation/splash/splash_screen.dart';
 import 'package:alif/utils/dependency_injection.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:alif/utils/style/theme.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DependencyInjection.init();
   SystemChrome.setPreferredOrientations([
@@ -34,13 +35,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Alif',
-      initialRoute: "/main",
+      initialRoute: "/splash",
       routes: {
         '/main': (context) => MainScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/retrieve': (context) => const RetrievePasswordScreen(),
-        '/splash': (context) => const Placeholder(),
+        '/splash': (context) => const SplashScreen(),
       },
       locale: const Locale('ar'),
       supportedLocales: const [

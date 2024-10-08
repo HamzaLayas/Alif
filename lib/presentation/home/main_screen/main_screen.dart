@@ -3,7 +3,6 @@ import 'package:alif/presentation/widgets/custom_bottom_navbar.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -25,20 +24,17 @@ class MainScreenView extends StatelessWidget {
     final cubit = context.read<MainCubit>();
     return BlocBuilder<MainCubit, MainState>(
       builder: (context, state) {
-        return Skeletonizer(
-          enabled: state is MainInitial,
-          child: Scaffold(
-            extendBody: true,
-            backgroundColor: AppColors.transparent,
-            body: PageView(
-              controller: cubit.pageController,
-              physics: NeverScrollableScrollPhysics(),
-              children: cubit.pages,
-            ),
-            bottomNavigationBar: CustomBotNavBar(
-              onTap: (page) => cubit.changePageTo(page: page),
-              selectedPage: cubit.selectedPage,
-            ),
+        return Scaffold(
+          extendBody: true,
+          backgroundColor: AppColors.transparent,
+          body: PageView(
+            controller: cubit.pageController,
+            physics: NeverScrollableScrollPhysics(),
+            children: cubit.pages,
+          ),
+          bottomNavigationBar: CustomBotNavBar(
+            onTap: (page) => cubit.changePageTo(page: page),
+            selectedPage: cubit.selectedPage,
           ),
         );
       },
