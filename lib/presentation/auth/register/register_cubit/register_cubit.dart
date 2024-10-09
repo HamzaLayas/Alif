@@ -1,8 +1,6 @@
-import 'dart:io';
-
+import 'package:alif/data/models/user_model.dart';
 import 'package:alif/data/repositories/auth_repo.dart';
 import 'package:alif/utils/style/alif_icons.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -29,40 +27,42 @@ class RegisterCubit extends Cubit<RegisterState> {
     isPasswordObscured = !isPasswordObscured;
     if (isPasswordObscured) {
       passwordIcon = AlifIcons.eye_off;
-      emit(RegisterPasswordObscured());
     } else {
       passwordIcon = AlifIcons.eye;
-      emit(RegisterPasswordVisible());
     }
+    emit(RegisterPasswordVisiblityToggle());
+    emit(RegisterInitial());
   }
 
   obscureConfirmToggle() {
     isConfirmObscured = !isConfirmObscured;
     if (isConfirmObscured) {
       confirmPasswordIcon = AlifIcons.eye_off;
-      emit(RegisterConfirmPasswordObscured());
     } else {
       confirmPasswordIcon = AlifIcons.eye;
-      emit(RegisterConfirmPasswordVisible());
     }
+    emit(RegisterPasswordVisiblityToggle());
+    emit(RegisterInitial());
   }
 
-  register() async {
+  register(
+    void Function(UserModel newUser) updateCurrentUser,
+  ) async {
     final isValidated = formKey.currentState!.validate();
-
     if (isValidated) {
       emit(RegisterLoading());
-
-      Response? res = await _authRepo.register(
+      final response = await _authRepo.register(
         name: nameController.text.trim(),
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
         phone: phoneController.text.trim(),
       );
-      if (res!.statusCode == HttpStatus.created) {
+      if (response.data != null) {
+        updateCurrentUser(response.data!);
+        await Future.delayed(Duration(seconds: 2));
         emit(RegisterSuccess());
       } else {
-        emit(RegisterFailure(error: res.data['message']));
+        emit(RegisterFailure(error: response.error!));
       }
     }
   }

@@ -14,10 +14,4 @@ final class RegisterFailure extends RegisterState {
   RegisterFailure({required this.error});
 }
 
-final class RegisterPasswordObscured extends RegisterState {}
-
-final class RegisterPasswordVisible extends RegisterState {}
-
-final class RegisterConfirmPasswordObscured extends RegisterState {}
-
-final class RegisterConfirmPasswordVisible extends RegisterState {}
+final class RegisterPasswordVisiblityToggle extends RegisterState {}

@@ -1,10 +1,12 @@
+import 'package:alif/data/models/wallet_model.dart';
+
 class UserModel {
   String? sId;
   String? name;
   String? email;
   String? phone;
   String? image;
-  String? role;
+  WalletModel? wallet;
   List<String>? favorites;
   UserModel({
     this.sId,
@@ -12,19 +14,15 @@ class UserModel {
     this.email,
     this.phone,
     this.image,
-    this.role,
+    this.wallet,
     this.favorites,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sId': sId,
       'name': name,
       'email': email,
       'phone': phone,
-      'image': image,
-      'role': role,
-      'favorites': favorites,
     };
   }
 
@@ -35,7 +33,7 @@ class UserModel {
       email: map['email'],
       phone: map['phone'],
       image: map['image'],
-      role: map['role'],
+      wallet: WalletModel.fromMap(map['wallet']),
       // favorites: map['favorites'],
     );
   }

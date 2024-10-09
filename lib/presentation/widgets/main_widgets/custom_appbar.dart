@@ -1,4 +1,5 @@
 import 'package:alif/utils/cubits/user_cubit/user_cubit.dart';
+import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -100,8 +101,8 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                     trailing: IconButton(
                       onPressed: () {},
                       icon: Icon(
-                        size: height * 0.03,
-                        Icons.notifications_none_outlined,
+                        size: height * 0.0275,
+                        AlifIcons.notification,
                         color: AppColors.surface,
                       ),
                     ),
@@ -110,11 +111,15 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Container(
                   width: double.infinity,
                   height: height * 0.060,
-                  margin:
-                      EdgeInsetsDirectional.symmetric(horizontal: width * 0.05)
-                          .copyWith(top: height * 0.005),
+                  margin: EdgeInsetsDirectional.symmetric(
+                    horizontal: width * 0.025,
+                  ).copyWith(
+                    top: height * 0.0025,
+                  ),
                   padding: EdgeInsetsDirectional.symmetric(
-                      horizontal: width * 0.0125),
+                    horizontal: width * 0.015,
+                    vertical: width * 0.015,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.surface.withOpacity(0.35),
                     borderRadius: BorderRadius.circular(100),

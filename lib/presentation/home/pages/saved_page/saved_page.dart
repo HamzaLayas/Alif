@@ -1,5 +1,5 @@
 import 'package:alif/presentation/home/pages/saved_page/saved_cubit/saved_cubit.dart';
-import 'package:alif/presentation/widgets/custom_appbar.dart';
+import 'package:alif/presentation/widgets/main_widgets/custom_appbar.dart';
 import 'package:alif/utils/cubits/user_cubit/user_cubit.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';

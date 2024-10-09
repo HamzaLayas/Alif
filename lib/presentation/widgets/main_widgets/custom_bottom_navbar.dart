@@ -14,7 +14,10 @@ class CustomBotNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Container(
+      height: height * 0.0775,
       decoration: BoxDecoration(
         color: AppColors.secondary,
         borderRadius: const BorderRadiusDirectional.only(

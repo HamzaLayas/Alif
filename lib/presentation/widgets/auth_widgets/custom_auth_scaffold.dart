@@ -44,7 +44,11 @@ class CustomAuthScaffold extends StatelessWidget {
           ),
         ),
       ),
-      body: child,
+      body: SafeArea(
+        left: false,
+        right: false,
+        child: child,
+      ),
     );
   }
 }

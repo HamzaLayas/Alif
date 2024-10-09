@@ -1,4 +1,4 @@
-import 'package:alif/presentation/widgets/custom_elevated_button.dart';
+import 'package:alif/presentation/widgets/auth_widgets/custom_elevated_button.dart';
 import 'package:alif/presentation/widgets/custom_gradient_shader.dart';
 import 'package:alif/utils/constants/validation_extension.dart';
 import 'package:alif/utils/style/colors.dart';
@@ -16,6 +16,7 @@ class RetrievePasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.secondary,
@@ -29,7 +30,7 @@ class RetrievePasswordScreen extends StatelessWidget {
         left: false,
         right: false,
         child: Padding(
-          padding: const EdgeInsetsDirectional.symmetric(horizontal: 20),
+          padding: EdgeInsetsDirectional.symmetric(horizontal: width * 0.03),
           child: Form(
             key: formKey,
             child: Column(

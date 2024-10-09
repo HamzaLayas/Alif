@@ -1,4 +1,3 @@
-import 'package:alif/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,21 +9,20 @@ class SplashCubit extends Cubit<SplashState> {
 
   SplashCubit() : super(SplashInitial());
 
-  UserModel? currentUser;
-
   late bool _isFirstTimeUser;
 
-  getCurrentUser(Future<UserModel?> Function() getCurrentUser) async {
+  getCurrentUser(Future<String?> Function() getCurrentUser) async {
+    String? error;
     await Future.wait([
       SharedPreferences.getInstance().then(
         (value) => _isFirstTimeUser = value.containsKey('repeatUser'),
       ),
-      getCurrentUser().then((value) => currentUser = value),
+      getCurrentUser().then((value) => error = value),
       Future.delayed(Duration(seconds: 4)),
     ]).then((value) {
       if (!_isFirstTimeUser) {
-        if (currentUser != null) {
-          emit(SplashAuthenticated(currentUser: currentUser!));
+        if (error == null) {
+          emit(SplashAuthenticated());
         } else {
           emit(SplashUnAuthenticated());
         }

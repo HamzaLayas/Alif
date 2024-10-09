@@ -38,7 +38,7 @@ class AppTextButton {
         surfaceTintColor: AppColors.transparent,
         backgroundColor: AppColors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(50),
         ),
       ),
     );
@@ -71,12 +71,12 @@ class AppElevatedButton {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         padding: EdgeInsetsDirectional.zero,
-        foregroundColor: AppColors.secondary,
+        foregroundColor: AppColors.onPrimary,
         surfaceTintColor: AppColors.transparent,
-        backgroundColor: AppColors.onSecondary,
+        backgroundColor: AppColors.surface,
         minimumSize: const Size.fromHeight(58),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(50),
         ),
       ),
     );

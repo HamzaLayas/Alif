@@ -4,11 +4,33 @@ extension Validations on String {
     return null;
   }
 
+  fullNameValidator() {
+    if (isEmpty) {
+      return "الاسم الكامل مطلوب";
+    }
+    List<String> nameParts = split(' ');
+    if (nameParts.length < 2) {
+      return "يجب إدخال الاسم واللقب";
+    }
+    RegExp arabicRegex = RegExp(r'^[\u0621-\u064A]+$');
+    if (!arabicRegex.hasMatch(nameParts[0]) ||
+        !arabicRegex.hasMatch(nameParts[1])) {
+      return "الاسم  واللقب يجب أن يكون باللغة العربية فقط";
+    }
+    if (nameParts[0].length < 2 || nameParts[1].length < 2) {
+      return "يجب أن يتكون الاسم واللقب من حرفين على الأقل";
+    }
+
+    return null;
+  }
+
   emailValidation() {
     final pattren = RegExp(
         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
-    if (isEmpty) return "الرجاء إدخال بريد إلكتروني صالح";
-    if (!contains('@') || !pattren.hasMatch(this)) return "الرجاء إدخال بريد إلكتروني صالح";
+    if (isEmpty) return "هذا الحقل مطلوب";
+    if (!contains('@') || !pattren.hasMatch(this)) {
+      return "الرجاء إدخال بريد إلكتروني صالح";
+    }
 
     return null;
   }

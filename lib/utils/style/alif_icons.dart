@@ -16,10 +16,6 @@
 ///         Author:    Stephen Hutchings
 ///         License:   SIL (http://scripts.sil.org/OFL)
 ///         Homepage:  http://typicons.com/
-/// * Linecons, Copyright (C) 2013 by Designmodo
-///         Author:    Designmodo for Smashing Magazine
-///         License:   CC BY ()
-///         Homepage:  http://designmodo.com/linecons-free/
 /// * Font Awesome 4, Copyright (C) 2016 by Dave Gandy
 ///         Author:    Dave Gandy
 ///         License:   SIL ()
@@ -28,6 +24,10 @@
 ///         Author:    Google
 ///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
 ///         Homepage:  https://design.google.com/icons/
+/// * Linecons, Copyright (C) 2013 by Designmodo
+///         Author:    Designmodo for Smashing Magazine
+///         License:   CC BY ()
+///         Homepage:  http://designmodo.com/linecons-free/
 /// * Entypo, Copyright (C) 2012 by Daniel Bruce
 ///         Author:    Daniel Bruce
 ///         License:   SIL (http://scripts.sil.org/OFL)
@@ -50,24 +50,23 @@ class AlifIcons {
   static const String? _kFontPkg = null;
 
   static const IconData user_outline = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData settings = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData star = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData star_empty = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData star_half = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ticket_outlined = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData home_outlined = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData home = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData wallet = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData details = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData saved = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData saved_outlined = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ticket = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData location_outline = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData location = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData sub = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData kids = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData help = IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData details = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData wallet = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData edit = IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData key = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData privacy = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData search = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData notification = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData eye = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -81,14 +80,13 @@ class AlifIcons {
   static const IconData arrows_cw_outline = IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData arrows_cw = IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData params = IconData(0xe820, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData subscriptions = IconData(0xe821, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData privacy = IconData(0xe822, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData kids = IconData(0xe823, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData logout = IconData(0xe824, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData email = IconData(0xe821, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData key = IconData(0xe822, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData car = IconData(0xe84e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData menu = IconData(0xf0c9, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData pencil_squared = IconData(0xf14b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData contact_us = IconData(0xf316, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData password = IconData(0xf319, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData sign_out = IconData(0xf339, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData trashcan = IconData(0xf33c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData location = IconData(0xf353, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

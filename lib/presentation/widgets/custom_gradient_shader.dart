@@ -18,7 +18,7 @@ class CustomGradientShader extends StatelessWidget {
           AppColors.onPrimary,
           AppColors.primary,
         ],
-      ).createShader(bounds),
+      ).  createShader(bounds),
       child: ColorFiltered(
         colorFilter:
             const ColorFilter.mode(AppColors.onSecondary, BlendMode.srcATop),
