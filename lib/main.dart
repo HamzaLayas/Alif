@@ -5,6 +5,8 @@ import 'package:alif/presentation/auth/register/register_screen.dart';
 import 'package:alif/presentation/auth/change_password/change_password_screen.dart';
 import 'package:alif/presentation/home/main_screen/main_screen.dart';
 import 'package:alif/presentation/auth/profile_details/profile_details_screen.dart';
+import 'package:alif/presentation/notification/notification_screan.dart';
+import 'package:alif/presentation/search/search_screen.dart';
 import 'package:alif/presentation/splash/splash_screen.dart';
 import 'package:alif/utils/dependency_injection.dart';
 import 'package:alif/utils/style/colors.dart';
@@ -40,14 +42,16 @@ class MyApp extends StatelessWidget {
       title: 'Alif',
       initialRoute: "/splash",
       routes: {
-        '/splash': (context) => const SplashScreen(),
+        '/splash': (context) => SplashScreen(),
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
-        '/retrieve': (context) => const RetrievePasswordScreen(),
+        '/retrieve': (context) => RetrievePasswordScreen(),
         '/main': (context) => MainScreen(),
         '/details': (context) => ProfileDetailsScreen(),
         '/password': (context) => ChangePasswordScreen(),
         '/email': (context) => ChangeEmailScreen(),
+        '/search': (context) => SearchScreen(),
+        '/notification': (context) => NotificationScreen(),
       },
       locale: const Locale('ar'),
       supportedLocales: const [

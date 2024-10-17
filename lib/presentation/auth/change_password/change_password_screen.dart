@@ -1,6 +1,6 @@
 import 'package:alif/presentation/auth/change_password/change_password_cubit/change_password_cubit.dart';
 import 'package:alif/presentation/widgets/auth_widgets/custom_elevated_button.dart';
-import 'package:alif/presentation/widgets/settings_widgets/custom_settings_scaffold.dart';
+import 'package:alif/presentation/widgets/custom_scaffold.dart';
 import 'package:alif/presentation/widgets/show_error.dart';
 import 'package:alif/presentation/widgets/show_loading_dialog.dart';
 import 'package:alif/utils/constants/validation_extension.dart';
@@ -42,7 +42,7 @@ class ChangePasswordScreenView extends StatelessWidget {
     final userCubit = context.read<UserCubit>();
     final changePasswordCubit = context.read<ChangePasswordCubit>();
     final width = MediaQuery.of(context).size.width;
-    return CustomSettingScaffold(
+    return CustomScaffold(
       title: "تغير كلمة المرور",
       child: BlocListener<ChangePasswordCubit, ChangePasswordState>(
         listener: (context, state) {

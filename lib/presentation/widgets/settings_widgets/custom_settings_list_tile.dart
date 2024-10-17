@@ -28,7 +28,7 @@ class CustomSettingsListTile extends StatelessWidget {
         style: Theme.of(context).textTheme.titleLarge,
       ),
       trailing: CustomGradientShader(
-        child: Icon(AlifIcons.left_open_big, size: 25),
+        child: Icon(AlifIcons.left, size: 25),
       ),
     );
   }

@@ -90,7 +90,7 @@ class RegisterScreenView extends StatelessWidget {
                         .titleLarge!
                         .copyWith(color: AppColors.onSurfaceVariant),
                     prefixIcon: const Icon(
-                      AlifIcons.user_outline,
+                      AlifIcons.user_outlined,
                       size: 30,
                     ),
                   ),
@@ -212,7 +212,7 @@ class RegisterScreenView extends StatelessWidget {
                         .titleLarge!
                         .copyWith(color: AppColors.onSurfaceVariant),
                     prefixIcon: const Icon(
-                      AlifIcons.phone_outline,
+                      AlifIcons.phone_outlined,
                       size: 30,
                     ),
                   ),

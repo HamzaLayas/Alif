@@ -1,3 +1,4 @@
+import 'package:alif/utils/constants/api_constants.dart';
 import 'package:alif/utils/cubits/user_cubit/user_cubit.dart';
 import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
@@ -24,7 +25,7 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         builder: (context, state) {
           final cubit = context.read<UserCubit>();
           return Container(
-            padding: EdgeInsetsDirectional.symmetric(horizontal: width * 0.025)
+            padding: EdgeInsetsDirectional.symmetric(horizontal: width * 0.03)
                 .copyWith(top: paddingTop),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
@@ -67,7 +68,11 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                         ),
                         child: ClipOval(
                           child: CachedNetworkImage(
-                            imageUrl: cubit.currentUser?.image ?? '',
+                            imageUrl: cubit.currentUser?.image != null
+                                ? ApiConstants.getImagePath(
+                                    cubit.currentUser!.image!,
+                                  )
+                                : '',
                             fit: BoxFit.fitWidth,
                             alignment: Alignment.center,
                             placeholder: (context, url) => Image.asset(
@@ -99,7 +104,8 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                           .copyWith(color: AppColors.surface),
                     ),
                     trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          Navigator.pushNamed(context, "/notification"),
                       icon: Icon(
                         size: height * 0.0275,
                         AlifIcons.notification,
@@ -113,17 +119,15 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   height: height * 0.060,
                   margin: EdgeInsetsDirectional.symmetric(
                     horizontal: width * 0.025,
-                  ).copyWith(
-                    top: height * 0.0025,
                   ),
                   padding: EdgeInsetsDirectional.symmetric(
                     horizontal: width * 0.015,
-                    vertical: width * 0.015,
                   ),
                   decoration: BoxDecoration(
                     color: AppColors.surface.withOpacity(0.35),
                     borderRadius: BorderRadius.circular(100),
                   ),
+                  alignment: AlignmentDirectional.center,
                   child: child,
                 ),
               ],

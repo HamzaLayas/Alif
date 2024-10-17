@@ -1,3 +1,4 @@
+import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,13 @@ class AppTheme {
       outlinedButtonTheme: AppOutlinedButton.themeData,
       textButtonTheme: AppTextButton.themeData,
       iconButtonTheme: AppIcontButton.themeData,
+      cardTheme: CardTheme(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18),
+          side: BorderSide(width: 0.5, color: AppColors.onSecondary),
+        ),
+        elevation: 0,
+      ),
     );
   }
 }
@@ -54,11 +62,14 @@ class AppOutlinedButton {
         surfaceTintColor: AppColors.transparent,
         foregroundColor: AppColors.onSurface,
         disabledForegroundColor: AppColors.onSurface,
-        disabledBackgroundColor: AppColors.surface,
         backgroundColor: AppColors.secondary,
-        minimumSize: const Size.fromHeight(70),
+        disabledBackgroundColor: AppColors.surface,
+        minimumSize: const Size.fromHeight(58),
         shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: AppColors.primary),
+          side: BorderSide(
+            width: 1,
+            color: AppColors.onSecondary,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
       ),
@@ -70,12 +81,18 @@ class AppElevatedButton {
   static ElevatedButtonThemeData get themeData {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        elevation: 0,
         padding: EdgeInsetsDirectional.zero,
-        foregroundColor: AppColors.onPrimary,
+        foregroundColor: AppColors.onSurface,
         surfaceTintColor: AppColors.transparent,
         backgroundColor: AppColors.surface,
+        disabledBackgroundColor: AppColors.surface,
         minimumSize: const Size.fromHeight(58),
         shape: RoundedRectangleBorder(
+          // side: BorderSide(
+          //   width: 1,
+          //   color: AppColors.onSecondary,
+          // ),
           borderRadius: BorderRadius.circular(50),
         ),
       ),
@@ -132,3 +149,43 @@ class AppColorScheme {
     );
   }
 }
+
+InputDecoration searchInputDecoration = InputDecoration(
+  isDense: true,
+  contentPadding: EdgeInsets.zero,
+  fillColor: AppColors.transparent,
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(50),
+    borderSide: BorderSide(color: AppColors.transparent, width: 0),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(50),
+    borderSide: BorderSide(color: AppColors.transparent, width: 0),
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(50),
+    borderSide: BorderSide(color: AppColors.transparent, width: 0),
+  ),
+  errorBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(50),
+    borderSide: BorderSide(color: AppColors.transparent, width: 0),
+  ),
+  prefixIcon: Transform.flip(
+    flipX: true,
+    child: Icon(
+      AlifIcons.search,
+      size: 30,
+      color: AppColors.surface,
+    ),
+  ),
+  hintText: "| الـبـحـث",
+  suffixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
+  suffixIcon: Transform.flip(
+    flipX: true,
+    child: Icon(
+      AlifIcons.filter,
+      size: 40,
+      color: AppColors.surface,
+    ),
+  ),
+);

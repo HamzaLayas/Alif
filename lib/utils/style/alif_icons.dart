@@ -41,6 +41,7 @@
 ///         License:   MIT (http://opensource.org/licenses/mit-license.php)
 ///         Homepage:  https://primer.style/octicons/
 ///
+library;
 import 'package:flutter/widgets.dart';
 
 class AlifIcons {
@@ -49,13 +50,15 @@ class AlifIcons {
   static const _kFontFam = 'AlifIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData user_outline = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData user_outlined = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData calender = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData star = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData star_empty = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData star_half = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData ticket_outlined = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData home_outlined = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData home = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData location = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData details = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData saved = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData saved_outlined = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -72,21 +75,27 @@ class AlifIcons {
   static const IconData eye = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData eye_off = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData mail = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData phone_outline = IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData down_open_big = IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData left_open_big = IconData(0xe81b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData right_open_big = IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData up_open_big = IconData(0xe81d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData arrows_cw_outline = IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData arrows_cw = IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData phone_outlined = IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData down = IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData left = IconData(0xe81b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData right = IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData up = IconData(0xe81d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData arrows_outlined = IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData arrows = IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData params = IconData(0xe820, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData email = IconData(0xe821, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData key = IconData(0xe822, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData filter = IconData(0xe823, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData education = IconData(0xe824, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData entertainment = IconData(0xe825, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData art = IconData(0xe826, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData sport = IconData(0xe827, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData workshop = IconData(0xe828, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData language = IconData(0xe829, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData car = IconData(0xe84e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData menu = IconData(0xf0c9, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData contact_us = IconData(0xf316, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData password = IconData(0xf319, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData sign_out = IconData(0xf339, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData trashcan = IconData(0xf33c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData location = IconData(0xf353, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

@@ -1,4 +1,5 @@
 import 'package:alif/data/repositories/auth_repo.dart';
+import 'package:alif/data/repositories/service_repo.dart';
 import 'package:alif/data/repositories/user_repo.dart';
 import 'package:alif/utils/api_interceptor.dart';
 import 'package:alif/utils/constants/api_constants.dart';
@@ -31,6 +32,7 @@ class DependencyInjection {
 
     // repositories
     getIt.registerLazySingleton<AuthRepo>(() => AuthRepo());
+    getIt.registerLazySingleton<ServiceRepo>(() => ServiceRepo());
     getIt.registerLazySingleton<UserRepo>(() => UserRepo());
   }
 }

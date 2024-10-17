@@ -15,9 +15,9 @@ class CustomBotNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    // final height = MediaQuery.of(context).size.height;
     return Container(
-      height: height * 0.0775,
+      // height: height * 0.0775,
       decoration: BoxDecoration(
         color: AppColors.secondary,
         borderRadius: const BorderRadiusDirectional.only(
@@ -58,7 +58,7 @@ class CustomBotNavBar extends StatelessWidget {
           currentIndex: selectedPage,
           items: const [
             BottomNavigationBarItem(
-              label: "Home",
+              label: "الرئيسية",
               backgroundColor: AppColors.transparent,
               activeIcon: CustomGradientShader(
                 child: Icon(AlifIcons.home),
@@ -68,7 +68,7 @@ class CustomBotNavBar extends StatelessWidget {
               ),
             ),
             BottomNavigationBarItem(
-              label: "Tickets",
+              label: "الحجوزات",
               backgroundColor: AppColors.transparent,
               activeIcon: CustomGradientShader(
                 child: Icon(AlifIcons.ticket),
@@ -78,7 +78,7 @@ class CustomBotNavBar extends StatelessWidget {
               ),
             ),
             BottomNavigationBarItem(
-              label: "Explore",
+              label: "إستكشف",
               backgroundColor: AppColors.transparent,
               activeIcon: CustomGradientShader(
                 child: Icon(Icons.explore),
@@ -88,7 +88,7 @@ class CustomBotNavBar extends StatelessWidget {
               ),
             ),
             BottomNavigationBarItem(
-              label: "Saved",
+              label: "المحفوظات",
               backgroundColor: AppColors.transparent,
               activeIcon: CustomGradientShader(
                 child: Icon(AlifIcons.saved),
@@ -98,13 +98,13 @@ class CustomBotNavBar extends StatelessWidget {
               ),
             ),
             BottomNavigationBarItem(
-              label: "Profile",
+              label: "الحساب",
               backgroundColor: AppColors.transparent,
               activeIcon: CustomGradientShader(
                 child: Icon(AlifIcons.user),
               ),
               icon: CustomGradientShader(
-                child: Icon(AlifIcons.user_outline),
+                child: Icon(AlifIcons.user_outlined),
               ),
             ),
           ],

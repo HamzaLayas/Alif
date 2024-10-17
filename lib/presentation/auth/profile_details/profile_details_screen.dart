@@ -3,9 +3,10 @@ import 'dart:typed_data';
 import 'package:alif/presentation/auth/profile_details/profile_details_cubit/profile_details_cubit.dart';
 import 'package:alif/presentation/widgets/auth_widgets/custom_elevated_button.dart';
 import 'package:alif/presentation/widgets/custom_gradient_shader.dart';
-import 'package:alif/presentation/widgets/settings_widgets/custom_settings_scaffold.dart';
+import 'package:alif/presentation/widgets/custom_scaffold.dart';
 import 'package:alif/presentation/widgets/show_error.dart';
 import 'package:alif/presentation/widgets/show_loading_dialog.dart';
+import 'package:alif/utils/constants/api_constants.dart';
 import 'package:alif/utils/constants/validation_extension.dart';
 import 'package:alif/utils/cubits/user_cubit/user_cubit.dart';
 import 'package:alif/utils/style/alif_icons.dart';
@@ -39,7 +40,7 @@ class ProfileDetailsScreenView extends StatelessWidget {
     final userCubit = context.read<UserCubit>();
     final profileDetailsCubit = context.read<ProfileDetailsCubit>();
     final width = MediaQuery.of(context).size.width;
-    return CustomSettingScaffold(
+    return CustomScaffold(
       title: "تعديل البيانات الشخصية",
       child: BlocListener<ProfileDetailsCubit, ProfileDetailsState>(
         listener: (context, state) {
@@ -109,8 +110,11 @@ class ProfileDetailsScreenView extends StatelessWidget {
                                         )
                                       : CachedNetworkImage(
                                           imageUrl:
-                                              userCubit.currentUser?.image ??
-                                                  '',
+                                              userCubit.currentUser?.image != null
+                                                  ? ApiConstants.getImagePath(
+                                                      userCubit.currentUser!.image!,
+                                                    )
+                                                  : '',
                                           fit: BoxFit.fitWidth,
                                           alignment: Alignment.center,
                                           placeholder: (context, url) =>
@@ -186,7 +190,7 @@ class ProfileDetailsScreenView extends StatelessWidget {
                         .titleLarge!
                         .copyWith(color: AppColors.onSurfaceVariant),
                     prefixIcon: const Icon(
-                      AlifIcons.user_outline,
+                      AlifIcons.user_outlined,
                       size: 30,
                     ),
                   ),
@@ -218,7 +222,7 @@ class ProfileDetailsScreenView extends StatelessWidget {
                         .titleLarge!
                         .copyWith(color: AppColors.onSurfaceVariant),
                     prefixIcon: const Icon(
-                      AlifIcons.phone_outline,
+                      AlifIcons.phone_outlined,
                       size: 30,
                     ),
                   ),
