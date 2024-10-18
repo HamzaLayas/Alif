@@ -1,11 +1,13 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:alif/data/models/service_category_model.dart';
+import 'package:alif/data/models/service_date.dart';
+
 class ServiceModel {
   // Location? location;
   String? sId;
   String? name;
   String? desription;
-  String? serviceCategories;
-  List<String>? serviceDate;
+  ServiceCategoryModel? serviceCategories;
+  List<ServiceDate>? serviceDate;
   String? companyInfo;
   bool? isActive;
   String? address;
@@ -17,9 +19,9 @@ class ServiceModel {
   List<String>? images;
   String? endDate;
   bool? isPermanent;
-  String? deletedAt;
-  String? createdAt;
-  String? updatedAt;
+  DateTime? deletedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
   ServiceModel({
     this.sId,
     this.name,
@@ -42,34 +44,43 @@ class ServiceModel {
     this.updatedAt,
   });
 
-  ServiceModel.fromMap(Map<String, dynamic> map) {
-    // location = json['location'] != null
-    //     ? new Location.fromJson(json['location'])
-    //     : null;
-    sId = map['_id'];
-    name = map['name'];
-    desription = map['desription'];
-    serviceCategories = map['serviceCategories'];
-    serviceDate = map['serviceDate'].cast<String>();
-    companyInfo = map['companyInfo'];
-    isActive = map['isActive'];
-    address = map['address'];
-    price = map['price'];
-    discount = map['discount'];
-    isFeatured = map['isFeatured'];
-    isSponsored = map['isSponsored'];
-    mainImage = map['mainImage'];
-    // if (json['images'] != null) {
-    //   images = <String>[];
-    //   json['images'].forEach((v) {
-    //     images!.add(new String.fromJson(v));
-    //   });
-    // }
-    endDate = map['endDate'];
-    isPermanent = map['isPermanent'];
-    deletedAt = map['deletedAt'];
-    createdAt = map['createdAt'];
-    updatedAt = map['updatedAt'];
+  factory ServiceModel.fromMap(Map<String, dynamic> map) {
+    return ServiceModel(
+      // location: json['location'] != null
+      //     ? new Location.fromJson(json['location'])
+      //     : null,
+      sId: map['_id'],
+      name: map['name'],
+      desription: map['desription'],
+      serviceCategories: ServiceCategoryModel.fromMap(map['serviceCategories']),
+      serviceDate: List<ServiceDate>.from(
+        map['serviceDate']
+            .map((e) => ServiceDate.fromMap(e as Map<String, dynamic>)),
+      ).toList(),
+      //  map['serviceDate'].cast<String>(),
+      companyInfo: map['companyInfo'],
+      isActive: map['isActive'],
+      address: map['address'],
+      price: map['price'],
+      discount: map['discount'],
+      isFeatured: map['isFeatured'],
+      isSponsored: map['isSponsored'],
+      mainImage: map['mainImage'],
+      // if (json['images'] !: null) {
+      //   images : <String>[],
+      //   json['images'].forEach((v) {
+      //     images!.add(new String.fromJson(v)),
+      //   }),
+      // }
+      endDate: map['endDate'],
+      isPermanent: map['isPermanent'],
+      deletedAt:
+          map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
+      createdAt:
+          map['createdAt'] == null ? null : DateTime.parse(map['createdAt']),
+      updatedAt:
+          map['updatedAt'] == null ? null : DateTime.parse(map['updatedAt']),
+    );
   }
 
   Map<String, dynamic> toMap() {
@@ -80,7 +91,7 @@ class ServiceModel {
     map['_id'] = sId;
     map['name'] = name;
     map['desription'] = desription;
-    map['serviceCategories'] = serviceCategories;
+    map['serviceCategories'] = serviceCategories?.toMap();
     map['serviceDate'] = serviceDate;
     map['companyInfo'] = companyInfo;
     map['isActive'] = isActive;
@@ -95,9 +106,9 @@ class ServiceModel {
     // }
     map['endDate'] = endDate;
     map['isPermanent'] = isPermanent;
-    map['deletedAt'] = deletedAt;
-    map['createdAt'] = createdAt;
-    map['updatedAt'] = updatedAt;
+    map['deletedAt'] = deletedAt?.toIso8601String();
+    map['createdAt'] = createdAt?.toIso8601String();
+    map['updatedAt'] = updatedAt?.toIso8601String();
     return map;
   }
 }

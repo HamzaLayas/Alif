@@ -1,9 +1,13 @@
+import 'package:alif/data/models/service_model.dart';
+import 'package:alif/utils/constants/api_constants.dart';
 import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomTrendingCard extends StatelessWidget {
-  const CustomTrendingCard({super.key});
+  const CustomTrendingCard({super.key, required this.service});
+  final ServiceModel? service;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +40,19 @@ class CustomTrendingCard extends StatelessWidget {
                       child: Container(
                         margin: EdgeInsetsDirectional.all(width * 0.015),
                         decoration: BoxDecoration(
+                          color: Colors.blueGrey.shade50,
                           borderRadius: BorderRadiusDirectional.only(
                             topEnd: Radius.circular(10),
                             topStart: Radius.circular(10),
                           ),
-                          // image: DecorationImage(
-                          //   image: AssetImage('lib/assets/images/profile.jpg'),
-                          //   fit: BoxFit.fitWidth,
-                          // ),
+                          image: service == null
+                              ? null
+                              : DecorationImage(
+                                  image: CachedNetworkImageProvider(
+                                      ApiConstants.getImagePath(
+                                          service!.mainImage!)),
+                                  fit: BoxFit.fitWidth,
+                                ),
                         ),
                       ),
                     ),
@@ -54,7 +63,7 @@ class CustomTrendingCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'كورس بطاطا شكرا',
+                            service?.name ?? 'كورس بطاطا شكرا',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
@@ -83,7 +92,7 @@ class CustomTrendingCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'شركة بطاطا التعليمية',
+                            service?.companyInfo ?? 'شركة بطاطا التعليمية',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium!
@@ -117,7 +126,7 @@ class CustomTrendingCard extends StatelessWidget {
                         children: [
                           Icon(AlifIcons.location),
                           Text(
-                            'سوق الجمعة جنب جامع السوالم',
+                            service?.address ?? 'سوق الجمعة جنب جامع السوالم',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium!
@@ -154,7 +163,7 @@ class CustomTrendingCard extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        'تعليمي',
+                        service?.serviceCategories?.name ?? 'الفئة',
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
                                   color: AppColors.surface,

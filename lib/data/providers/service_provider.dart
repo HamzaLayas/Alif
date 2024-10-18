@@ -33,8 +33,17 @@ class ServiceProvider {
 
   Future<Response> getFeaturedServices() async {
     try {
+      Response response = await client.get('service/all?isFeatured=true');
+      return response;
+    } on DioException catch (e) {
+      return e.response!;
+    }
+  }
+
+  Future<Response> getTrendingServices() async {
+    try {
       Response response =
-          await client.get('service/', data: {"isFeatured": true});
+          await client.get('service/all?sort=-1&requestLimit=5');
       return response;
     } on DioException catch (e) {
       return e.response!;
@@ -44,7 +53,7 @@ class ServiceProvider {
   Future<Response> getNewServices() async {
     try {
       Response response =
-          await client.get('service/', data: {"sort": -1, "requestLimit": 5});
+          await client.get('service/all?sort=-1&requestLimit=5');
       return response;
     } on DioException catch (e) {
       return e.response!;

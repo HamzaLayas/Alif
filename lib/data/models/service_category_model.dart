@@ -2,10 +2,9 @@ class ServiceCategoryModel {
   String? sId;
   String? name;
   String? serviceType;
-  String? deletedAt;
-  String? createdAt;
-  String? updatedAt;
-  List<String>? services;
+  DateTime? deletedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
   ServiceCategoryModel({
     this.sId,
@@ -14,17 +13,20 @@ class ServiceCategoryModel {
     this.deletedAt,
     this.createdAt,
     this.updatedAt,
-    this.services,
   });
 
-  ServiceCategoryModel.fromMap(Map<String, dynamic> map) {
-    sId = map['_id'];
-    name = map['name'];
-    serviceType = map['serviceType'];
-    deletedAt = map['deletedAt'];
-    createdAt = map['createdAt'];
-    updatedAt = map['updatedAt'];
-    // services = json['services'].cast<String>();
+  factory ServiceCategoryModel.fromMap(Map<String, dynamic> map) {
+    return ServiceCategoryModel(
+      sId: map['_id'],
+      name: map['name'],
+      serviceType: map['serviceType'],
+      deletedAt:
+          map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
+      createdAt:
+          map['createdAt'] == null ? null : DateTime.parse(map['createdAt']),
+      updatedAt:
+          map['updatedAt'] == null ? null : DateTime.parse(map['updatedAt']),
+    );
   }
 
   Map<String, dynamic> toMap() {
@@ -32,10 +34,9 @@ class ServiceCategoryModel {
     map['_id'] = sId;
     map['name'] = name;
     map['serviceType'] = serviceType;
-    map['deletedAt'] = deletedAt;
-    map['createdAt'] = createdAt;
-    map['updatedAt'] = updatedAt;
-    // data['services'] = services;
+    map['deletedAt'] = deletedAt?.toIso8601String();
+    map['createdAt'] = createdAt?.toIso8601String();
+    map['updatedAt'] = updatedAt?.toIso8601String();
     return map;
   }
 }

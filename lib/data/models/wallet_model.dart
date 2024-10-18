@@ -2,9 +2,9 @@ class WalletModel {
   String? sId;
   String? user;
   int? balance;
-  String? deletedAt;
-  String? createdAt;
-  String? updatedAt;
+  DateTime? deletedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
   WalletModel({
     this.sId,
     this.user,
@@ -14,25 +14,28 @@ class WalletModel {
     this.updatedAt,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sId': sId,
-      'user': user,
-      'balance': balance,
-      'deletedAt': deletedAt,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
-    };
-  }
-
   factory WalletModel.fromMap(Map<String, dynamic> map) {
     return WalletModel(
       sId: map['sId'],
       user: map['user'],
       balance: map['balance'],
-      deletedAt: map['deletedAt'],
-      createdAt: map['createdAt'],
-      updatedAt: map['updatedAt'],
+      deletedAt:
+          map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
+      createdAt:
+          map['createdAt'] == null ? null : DateTime.parse(map['createdAt']),
+      updatedAt:
+          map['updatedAt'] == null ? null : DateTime.parse(map['updatedAt']),
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'sId': sId,
+      'user': user,
+      'balance': balance,
+      'deletedAt': deletedAt?.toIso8601String(),
+      'createdAt': createdAt?.toIso8601String(),
+      'updatedAt': updatedAt?.toIso8601String(),
+    };
   }
 }

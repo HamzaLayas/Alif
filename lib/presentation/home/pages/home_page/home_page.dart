@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:get_it/get_it.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -16,127 +17,164 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final paddingTop = MediaQuery.of(context).viewPadding.top;
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => _getIt.get<UserCubit>()),
       ],
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        resizeToAvoidBottomInset: false,
-        backgroundColor: AppColors.secondary,
-        appBar: CustomeAppBar(
-          height: height,
-          child: SizedBox.shrink(),
-        ),
-        body: CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: EdgeInsetsDirectional.only(
-                top: paddingTop + (height * 0.15),
-                bottom: height * 0.0125,
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: height * 0.225,
-                child: FlutterCarousel.builder(
-                  options: FlutterCarouselOptions(
-                    autoPlay: false,
-                    viewportFraction: 1,
-                    floatingIndicator: false,
-                    enableInfiniteScroll: false,
-                    slideIndicator: CircularWaveSlideIndicator(),
-                    autoPlayInterval: const Duration(seconds: 3),
+      child: HomePageView(),
+    );
+  }
+}
+
+class HomePageView extends StatelessWidget {
+  const HomePageView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final paddingTop = MediaQuery.of(context).viewPadding.top;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final homeCubit = context.read<HomeCubit>();
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: AppColors.secondary,
+      appBar: CustomeAppBar(
+        height: height,
+        child: SizedBox.shrink(),
+      ),
+      body: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          return Skeletonizer(
+            enabled: state is HomeInitial,
+            child: CustomScrollView(
+              slivers: [
+                SliverPadding(
+                  padding: EdgeInsetsDirectional.only(
+                    top: paddingTop + (height * 0.15),
+                    bottom: height * 0.0125,
                   ),
-                  itemCount: 1,
-                  itemBuilder: (context, index, realIndex) =>
-                      CustomFeaturedBanner(),
                 ),
-              ),
-            ),
-            SliverPadding(
-              padding: EdgeInsetsDirectional.symmetric(horizontal: width * 0.03)
-                  .copyWith(top: height * 0.0125, bottom: height * 0.005),
-              sliver: SliverToBoxAdapter(
-                child: Text(
-                  "الأنـشـطـة الـرائـجـة",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(fontWeight: FontWeight.w600),
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: AspectRatio(
-                aspectRatio: 375 / 230,
-                child: Container(
-                  foregroundDecoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: AlignmentDirectional.centerStart,
-                      end: AlignmentDirectional.centerEnd,
-                      colors: [
-                        AppColors.secondary,
-                        AppColors.secondary.withOpacity(0),
-                        AppColors.secondary.withOpacity(0),
-                        AppColors.secondary,
-                      ],
-                      stops: [0.0, 0.075, 0.925, 1.0],
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: height * 0.225,
+                    child: FlutterCarousel.builder(
+                      options: FlutterCarouselOptions(
+                        autoPlay: true,
+                        viewportFraction: 1,
+                        floatingIndicator: false,
+                        enableInfiniteScroll: true,
+                        slideIndicator: CircularWaveSlideIndicator(),
+                        autoPlayInterval: const Duration(seconds: 5),
+                        autoPlayCurve: Curves.easeInOutCubic,
+                      ),
+                      itemCount: state is HomeInitial
+                          ? 3
+                          : homeCubit.featuredServices.length,
+                      itemBuilder: (context, index, realIndex) =>
+                          CustomFeaturedBanner(
+                        service: state is HomeInitial
+                            ? null
+                            : homeCubit.featuredServices[index],
+                      ),
                     ),
                   ),
-                  child: ListView.separated(
-                    itemCount: 5,
-                    padding: EdgeInsetsDirectional.symmetric(
-                      horizontal: width * 0.02,
+                ),
+                SliverPadding(
+                  padding: EdgeInsetsDirectional.symmetric(
+                          horizontal: width * 0.03)
+                      .copyWith(top: height * 0.0125, bottom: height * 0.005),
+                  sliver: SliverToBoxAdapter(
+                    child: Text(
+                      "الأنـشـطـة الـرائـجـة",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(fontWeight: FontWeight.w600),
                     ),
-                    scrollDirection: Axis.horizontal,
-                    separatorBuilder: (context, index) =>
-                        SizedBox(width: width * 0.03),
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: AspectRatio(
+                    aspectRatio: 375 / 230,
+                    child: Container(
+                      foregroundDecoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: AlignmentDirectional.centerStart,
+                          end: AlignmentDirectional.centerEnd,
+                          colors: [
+                            AppColors.secondary,
+                            AppColors.secondary.withOpacity(0),
+                            AppColors.secondary.withOpacity(0),
+                            AppColors.secondary,
+                          ],
+                          stops: [0.0, 0.075, 0.925, 1.0],
+                        ),
+                      ),
+                      child: ListView.separated(
+                        itemCount: state is HomeInitial
+                            ? 3
+                            : homeCubit.trendingServices.length,
+                        padding: EdgeInsetsDirectional.symmetric(
+                          horizontal: width * 0.02,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        separatorBuilder: (context, index) =>
+                            SizedBox(width: width * 0.03),
+                        itemBuilder: (context, index) {
+                          return CustomTrendingCard(
+                            service: state is HomeInitial
+                                ? null
+                                : homeCubit.trendingServices[index],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                SliverPadding(
+                  padding: EdgeInsetsDirectional.symmetric(
+                          horizontal: width * 0.03)
+                      .copyWith(top: height * 0.0125, bottom: height * 0.005),
+                  sliver: SliverToBoxAdapter(
+                    child: Text(
+                      "الأنـشـطـة الـجـديـدة",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                SliverPadding(
+                  padding:
+                      EdgeInsetsDirectional.symmetric(horizontal: width * 0.02),
+                  sliver: SliverList.separated(
+                    itemCount:
+                        state is HomeInitial ? 3 : homeCubit.newServices.length,
+                    separatorBuilder: (context, index) {
+                      return SizedBox(height: height * 0.0125);
+                    },
                     itemBuilder: (context, index) {
-                      return CustomTrendingCard();
+                      return CustomNewCard(
+                        service: state is HomeInitial
+                            ? null
+                            : homeCubit.newServices[index],
+                      );
                     },
                   ),
                 ),
-              ),
-            ),
-            SliverPadding(
-              padding: EdgeInsetsDirectional.symmetric(horizontal: width * 0.03)
-                  .copyWith(top: height * 0.0125, bottom: height * 0.005),
-              sliver: SliverToBoxAdapter(
-                child: Text(
-                  "الأنـشـطـة الـجـديـدة",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(fontWeight: FontWeight.w600),
+                SliverPadding(
+                  padding: EdgeInsetsDirectional.only(
+                    top: height * 0.0125,
+                    bottom: height * 0.0775,
+                  ),
                 ),
-              ),
+              ],
             ),
-            SliverPadding(
-              padding:
-                  EdgeInsetsDirectional.symmetric(horizontal: width * 0.02),
-              sliver: SliverList.separated(
-                itemCount: 1,
-                separatorBuilder: (context, index) {
-                  return SizedBox(height: height * 0.0125);
-                },
-                itemBuilder: (context, index) {
-                  return CustomNewCard();
-                },
-              ),
-            ),
-            SliverPadding(
-              padding: EdgeInsetsDirectional.only(
-                top: height * 0.0125,
-                bottom: height * 0.0775,
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

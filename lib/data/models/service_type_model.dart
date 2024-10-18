@@ -4,9 +4,9 @@ class ServiceTypeModel {
   String? image;
   String? description;
   List<String>? servicesCategories;
-  String? deletedAt;
-  String? createdAt;
-  String? updatedAt;
+  DateTime? deletedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
   ServiceTypeModel({
     this.sId,
@@ -31,9 +31,12 @@ class ServiceTypeModel {
       //     servicesCategories!.add(new Null.frommap(v)),
       //   }),
       // }
-      deletedAt: map['deletedAt'],
-      createdAt: map['createdAt'],
-      updatedAt: map['updatedAt'],
+      deletedAt:
+          map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
+      createdAt:
+          map['createdAt'] == null ? null : DateTime.parse(map['createdAt']),
+      updatedAt:
+          map['updatedAt'] == null ? null : DateTime.parse(map['updatedAt']),
     );
   }
 
@@ -47,9 +50,9 @@ class ServiceTypeModel {
     //   data['servicesCategories'] =
     //       this.servicesCategories!.map((v) => v.tomap()).toList();
     // }
-    map['deletedAt'] = deletedAt;
-    map['createdAt'] = createdAt;
-    map['updatedAt'] = updatedAt;
+    map['deletedAt'] = deletedAt?.toIso8601String();
+    map['createdAt'] = createdAt?.toIso8601String();
+    map['updatedAt'] = updatedAt?.toIso8601String();
     return map;
   }
 }

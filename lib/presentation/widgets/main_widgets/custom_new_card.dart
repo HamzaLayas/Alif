@@ -1,14 +1,18 @@
+import 'package:alif/data/models/service_model.dart';
 import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CustomNewCard extends StatelessWidget {
-  const CustomNewCard({super.key});
+  const CustomNewCard({super.key, required this.service});
+  final ServiceModel? service;
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    final DateFormat formatter = DateFormat('yyyy/MM/dd');
     return AspectRatio(
       aspectRatio: 335 / 200,
       child: Stack(
@@ -36,14 +40,18 @@ class CustomNewCard extends StatelessWidget {
                       child: Container(
                         margin: EdgeInsetsDirectional.all(width * 0.015),
                         decoration: BoxDecoration(
+                          color: Colors.blueGrey.shade50,
                           borderRadius: BorderRadiusDirectional.only(
                             topEnd: Radius.circular(10),
                             topStart: Radius.circular(10),
                           ),
-                          // image: DecorationImage(
-                          //   image: AssetImage('lib/assets/images/profile.jpg'),
-                          //   fit: BoxFit.fitWidth,
-                          // ),
+                          image: service == null
+                              ? null
+                              : DecorationImage(
+                                  image: AssetImage(
+                                      'lib/assets/images/profile.jpg'),
+                                  fit: BoxFit.fitWidth,
+                                ),
                         ),
                       ),
                     ),
@@ -57,9 +65,10 @@ class CustomNewCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'كورس بطاطا شكرا',
+                                service?.name ?? 'كورس بطاطا شكرا',
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge!
@@ -68,17 +77,23 @@ class CustomNewCard extends StatelessWidget {
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
-                              Text(
-                                'كورس بطاطا شكرا',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(color: AppColors.onSurface),
+                              Row(
+                                children: [
+                                  Icon(AlifIcons.location),
+                                  Text(
+                                    service?.address ??
+                                        'سوق الجمعة جنب جامع السوالم',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(color: AppColors.onSurface),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                           SizedBox(
-                            width: width * 0.25,
+                            width: width * 0.3,
                             height: height * 0.05,
                             child: OutlinedButton(
                               onPressed: null,
@@ -86,7 +101,10 @@ class CustomNewCard extends StatelessWidget {
                                 backgroundColor: AppColors.transparent,
                               ),
                               child: Text(
-                                'data',
+                                service != null
+                                    ? formatter.format(
+                                        service!.serviceDate!.first.date!)
+                                    : '0000/00/00',
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge!
@@ -127,7 +145,7 @@ class CustomNewCard extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        'تعليمي',
+                        service?.serviceCategories?.name ?? 'الفئة',
                         style:
                             Theme.of(context).textTheme.titleMedium!.copyWith(
                                   color: AppColors.surface,

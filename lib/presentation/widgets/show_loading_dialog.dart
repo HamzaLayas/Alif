@@ -11,7 +11,7 @@ Future<void> showLoadingDialog(BuildContext context) async {
     builder: (BuildContext context) {
       final height = MediaQuery.of(context).size.height;
       return PopScope(
-        canPop: true,
+        canPop: false,
         child: AlertDialog(
           surfaceTintColor: Colors.transparent,
           backgroundColor: Colors.transparent,
