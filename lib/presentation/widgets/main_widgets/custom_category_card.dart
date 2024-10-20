@@ -21,7 +21,7 @@ class CustomCategoryCard extends StatelessWidget {
               vertical: height * 0.0075,
             ),
             decoration: BoxDecoration(
-              color: AppColors.onPrimary,
+              color: Colors.blueGrey.shade50,
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
                 width: 0.5,

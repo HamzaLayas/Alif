@@ -52,7 +52,9 @@ class ServiceModel {
       sId: map['_id'],
       name: map['name'],
       desription: map['desription'],
-      serviceCategories: ServiceCategoryModel.fromMap(map['serviceCategories']),
+      serviceCategories: map['serviceCategories'] != null
+          ? ServiceCategoryModel.fromMap(map['serviceCategories'])
+          : null,
       serviceDate: List<ServiceDate>.from(
         map['serviceDate']
             .map((e) => ServiceDate.fromMap(e as Map<String, dynamic>)),

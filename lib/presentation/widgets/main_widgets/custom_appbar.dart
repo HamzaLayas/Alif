@@ -19,11 +19,11 @@ class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final paddingTop = MediaQuery.of(context).viewPadding.top;
     final width = MediaQuery.of(context).size.width;
+    final cubit = context.read<UserCubit>();
     return AppBar(
       backgroundColor: AppColors.transparent,
       flexibleSpace: BlocBuilder<UserCubit, UserState>(
         builder: (context, state) {
-          final cubit = context.read<UserCubit>();
           return Container(
             padding: EdgeInsetsDirectional.symmetric(horizontal: width * 0.03)
                 .copyWith(top: paddingTop),

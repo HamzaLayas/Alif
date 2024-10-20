@@ -1,6 +1,9 @@
-import 'package:alif/data/models/wallet_model.dart';
+// ignore_for_file: must_be_immutable
 
-class UserModel {
+import 'package:alif/data/models/wallet_model.dart';
+import 'package:equatable/equatable.dart';
+
+class UserModel extends Equatable {
   String? sId;
   String? name;
   String? email;
@@ -8,6 +11,7 @@ class UserModel {
   String? image;
   WalletModel? wallet;
   List<String>? favorites;
+
   UserModel({
     this.sId,
     this.name,
@@ -37,4 +41,7 @@ class UserModel {
       // favorites: map['favorites'],
     );
   }
+  @override
+  List<Object?> get props =>
+      [sId, name, email, phone, image, wallet, favorites];
 }

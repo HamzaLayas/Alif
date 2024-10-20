@@ -14,19 +14,14 @@ import 'package:alif/utils/style/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 
 class ProfileDetailsScreen extends StatelessWidget {
-  ProfileDetailsScreen({super.key});
-  final _getIt = GetIt.I;
+  const ProfileDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => ProfileDetailsCubit()),
-        BlocProvider(create: (context) => _getIt.get<UserCubit>()),
-      ],
+    return BlocProvider(
+      create: (context) => ProfileDetailsCubit(),
       child: ProfileDetailsScreenView(),
     );
   }
@@ -109,12 +104,13 @@ class ProfileDetailsScreenView extends StatelessWidget {
                                               AlignmentDirectional.center,
                                         )
                                       : CachedNetworkImage(
-                                          imageUrl:
-                                              userCubit.currentUser?.image != null
-                                                  ? ApiConstants.getImagePath(
-                                                      userCubit.currentUser!.image!,
-                                                    )
-                                                  : '',
+                                          imageUrl: userCubit
+                                                      .currentUser?.image !=
+                                                  null
+                                              ? ApiConstants.getImagePath(
+                                                  userCubit.currentUser!.image!,
+                                                )
+                                              : '',
                                           fit: BoxFit.fitWidth,
                                           alignment: Alignment.center,
                                           placeholder: (context, url) =>

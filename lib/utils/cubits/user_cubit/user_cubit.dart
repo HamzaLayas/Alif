@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:equatable/equatable.dart';
 
 part 'user_state.dart';
 
@@ -30,9 +31,13 @@ class UserCubit extends Cubit<UserState> {
   final _userRepo = GetIt.I.get<UserRepo>();
 
   void updateCurrentUser(UserModel newUser) {
+    emit(UserLoading());
     currentUser = newUser;
     nameController.text = currentUser?.name ?? '';
     phoneController.text = currentUser?.phone ?? '';
+    Future.delayed(Duration(milliseconds: 300)).then(
+      (value) => emit(UserLoaded()),
+    );
   }
 
   Future<String?> getUserData() async {

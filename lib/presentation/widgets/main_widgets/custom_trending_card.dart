@@ -1,4 +1,5 @@
 import 'package:alif/data/models/service_model.dart';
+import 'package:alif/presentation/widgets/main_widgets/custom_saved_button.dart';
 import 'package:alif/utils/constants/api_constants.dart';
 import 'package:alif/utils/style/alif_icons.dart';
 import 'package:alif/utils/style/colors.dart';
@@ -26,7 +27,8 @@ class CustomTrendingCard extends StatelessWidget {
               side: BorderSide(width: 0.5, color: AppColors.onSecondary),
             ),
             child: InkWell(
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, '/service', arguments: service),
               borderRadius: BorderRadius.circular(18),
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -37,22 +39,25 @@ class CustomTrendingCard extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 15,
-                      child: Container(
-                        margin: EdgeInsetsDirectional.all(width * 0.015),
-                        decoration: BoxDecoration(
-                          color: Colors.blueGrey.shade50,
-                          borderRadius: BorderRadiusDirectional.only(
-                            topEnd: Radius.circular(10),
-                            topStart: Radius.circular(10),
+                      child: Hero(
+                        tag: service?.sId ?? '',
+                        child: Container(
+                          margin: EdgeInsetsDirectional.all(width * 0.015),
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey.shade50,
+                            borderRadius: BorderRadiusDirectional.only(
+                              topEnd: Radius.circular(10),
+                              topStart: Radius.circular(10),
+                            ),
+                            image: service == null
+                                ? null
+                                : DecorationImage(
+                                    image: CachedNetworkImageProvider(
+                                        ApiConstants.getImagePath(
+                                            service!.mainImage!)),
+                                    fit: BoxFit.fitWidth,
+                                  ),
                           ),
-                          image: service == null
-                              ? null
-                              : DecorationImage(
-                                  image: CachedNetworkImageProvider(
-                                      ApiConstants.getImagePath(
-                                          service!.mainImage!)),
-                                  fit: BoxFit.fitWidth,
-                                ),
                         ),
                       ),
                     ),
@@ -124,7 +129,7 @@ class CustomTrendingCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Icon(AlifIcons.location),
+                          Icon(AlifIcons.location, size: 15),
                           Text(
                             service?.address ?? 'سوق الجمعة جنب جامع السوالم',
                             style: Theme.of(context)
@@ -172,22 +177,7 @@ class CustomTrendingCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    width: height * 0.040,
-                    height: height * 0.040,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.surface.withOpacity(0.85),
-                    ),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        AlifIcons.saved_outlined,
-                        size: 25,
-                        color: AppColors.onPrimary,
-                      ),
-                    ),
-                  ),
+                  CustomSavedButton(),
                 ],
               ),
             ),

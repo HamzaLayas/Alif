@@ -3,25 +3,19 @@ import 'package:alif/presentation/widgets/main_widgets/custom_appbar.dart';
 import 'package:alif/presentation/widgets/main_widgets/custom_featured_banner.dart';
 import 'package:alif/presentation/widgets/main_widgets/custom_new_card.dart';
 import 'package:alif/presentation/widgets/main_widgets/custom_trending_card.dart';
-import 'package:alif/utils/cubits/user_cubit/user_cubit.dart';
 import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
-import 'package:get_it/get_it.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-  final _getIt = GetIt.I;
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => HomeCubit()),
-        BlocProvider(create: (context) => _getIt.get<UserCubit>()),
-      ],
+    return BlocProvider(
+      create: (context) => HomeCubit(),
       child: HomePageView(),
     );
   }
@@ -98,38 +92,23 @@ class HomePageView extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: AspectRatio(
                     aspectRatio: 375 / 230,
-                    child: Container(
-                      foregroundDecoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: AlignmentDirectional.centerStart,
-                          end: AlignmentDirectional.centerEnd,
-                          colors: [
-                            AppColors.secondary,
-                            AppColors.secondary.withOpacity(0),
-                            AppColors.secondary.withOpacity(0),
-                            AppColors.secondary,
-                          ],
-                          stops: [0.0, 0.075, 0.925, 1.0],
-                        ),
+                    child: ListView.separated(
+                      itemCount: state is HomeInitial
+                          ? 3
+                          : homeCubit.trendingServices.length,
+                      padding: EdgeInsetsDirectional.symmetric(
+                        horizontal: width * 0.02,
                       ),
-                      child: ListView.separated(
-                        itemCount: state is HomeInitial
-                            ? 3
-                            : homeCubit.trendingServices.length,
-                        padding: EdgeInsetsDirectional.symmetric(
-                          horizontal: width * 0.02,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        separatorBuilder: (context, index) =>
-                            SizedBox(width: width * 0.03),
-                        itemBuilder: (context, index) {
-                          return CustomTrendingCard(
-                            service: state is HomeInitial
-                                ? null
-                                : homeCubit.trendingServices[index],
-                          );
-                        },
-                      ),
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder: (context, index) =>
+                          SizedBox(width: width * 0.03),
+                      itemBuilder: (context, index) {
+                        return CustomTrendingCard(
+                          service: state is HomeInitial
+                              ? null
+                              : homeCubit.trendingServices[index],
+                        );
+                      },
                     ),
                   ),
                 ),

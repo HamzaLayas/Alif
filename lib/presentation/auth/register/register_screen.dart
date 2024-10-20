@@ -11,19 +11,14 @@ import 'package:alif/utils/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get_it/get_it.dart';
 
 class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
-  final _getIt = GetIt.I;
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => RegisterCubit()),
-        BlocProvider(create: (context) => _getIt.get<UserCubit>()),
-      ],
+    return BlocProvider(
+      create: (context) => RegisterCubit(),
       child: RegisterScreenView(),
     );
   }
