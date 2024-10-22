@@ -55,6 +55,21 @@ class ServiceRepo {
     }
   }
 
+  Future<ResponseHandler<List<ServiceModel>>> getSavedServices() async {
+    final response = await _serviceProvider.getSavedServices();
+    if (response.statusCode == HttpStatus.ok) {
+      final data = response.data['data']['data'];
+
+      final services = List<ServiceModel>.from(
+        data.map((e) => ServiceModel.fromMap(e as Map<String, dynamic>)),
+      ).toList();
+
+      return ResponseHandler<List<ServiceModel>>(data: services);
+    } else {
+      return ResponseHandler(error: response.data['message']);
+    }
+  }
+
   Future<ResponseHandler<List<ServiceModel>>> getFeaturedServices() async {
     final response = await _serviceProvider.getFeaturedServices();
     if (response.statusCode == HttpStatus.ok) {
@@ -69,6 +84,7 @@ class ServiceRepo {
       return ResponseHandler(error: response.data['message']);
     }
   }
+
   Future<ResponseHandler<List<ServiceModel>>> getTrendingServices() async {
     final response = await _serviceProvider.getTrendingServices();
     if (response.statusCode == HttpStatus.ok) {

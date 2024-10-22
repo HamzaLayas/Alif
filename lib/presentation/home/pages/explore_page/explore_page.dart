@@ -89,10 +89,10 @@ class ExplorePageView extends StatelessWidget {
                     child: ListView.builder(
                       physics: AlwaysScrollableScrollPhysics(),
                       itemCount: state is ExploreInitial
-                          ? 10
+                          ? 6
                           : exploreCubit.types.length,
                       itemBuilder: (context, index) {
-                        return CustomCategoryCard(
+                        return CustomTypeCard(
                           type: state is ExploreInitial
                               ? null
                               : exploreCubit.types[index],

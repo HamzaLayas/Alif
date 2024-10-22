@@ -64,7 +64,7 @@ class HomePageView extends StatelessWidget {
                         autoPlayCurve: Curves.easeInOutCubic,
                       ),
                       itemCount: state is HomeInitial
-                          ? 3
+                          ? 1
                           : homeCubit.featuredServices.length,
                       itemBuilder: (context, index, realIndex) =>
                           CustomFeaturedBanner(
@@ -94,7 +94,7 @@ class HomePageView extends StatelessWidget {
                     aspectRatio: 375 / 230,
                     child: ListView.separated(
                       itemCount: state is HomeInitial
-                          ? 3
+                          ? 2
                           : homeCubit.trendingServices.length,
                       padding: EdgeInsetsDirectional.symmetric(
                         horizontal: width * 0.02,
@@ -131,7 +131,7 @@ class HomePageView extends StatelessWidget {
                       EdgeInsetsDirectional.symmetric(horizontal: width * 0.02),
                   sliver: SliverList.separated(
                     itemCount:
-                        state is HomeInitial ? 3 : homeCubit.newServices.length,
+                        state is HomeInitial ? 1 : homeCubit.newServices.length,
                     separatorBuilder: (context, index) {
                       return SizedBox(height: height * 0.0125);
                     },

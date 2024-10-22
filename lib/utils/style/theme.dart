@@ -180,12 +180,9 @@ InputDecoration searchInputDecoration = InputDecoration(
   ),
   hintText: "| الـبـحـث",
   suffixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
-  suffixIcon: Transform.flip(
-    flipX: true,
-    child: Icon(
-      AlifIcons.filter,
-      size: 40,
-      color: AppColors.surface,
-    ),
+  suffixIcon: Icon(
+    AlifIcons.filter,
+    size: 40,
+    color: AppColors.surface,
   ),
 );

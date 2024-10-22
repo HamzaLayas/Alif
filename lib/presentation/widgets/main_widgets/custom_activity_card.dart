@@ -41,14 +41,6 @@ class CustomActivityCard extends StatelessWidget {
                   children: [
                     Spacer(flex: 1),
                     Text(
-                      'من يوم 15/10/2024 إلي 20/10/2024',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(color: AppColors.onPrimary),
-                    ),
-                    Spacer(flex: 2),
-                    Text(
                       'كورس بطاطة شكرا',
                       maxLines: 2,
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -64,7 +56,7 @@ class CustomActivityCard extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                     ),
-                    Spacer(flex: 3),
+                    Spacer(flex: 2),
                     RichText(
                       text: TextSpan(
                         children: [
@@ -84,6 +76,14 @@ class CustomActivityCard extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                    Spacer(flex: 3),
+                    Text(
+                      '2024/10/15 - 2024/10/20',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(color: AppColors.onPrimary),
                     ),
                     Spacer(flex: 1),
                   ],

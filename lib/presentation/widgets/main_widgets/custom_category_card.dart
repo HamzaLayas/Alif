@@ -4,8 +4,8 @@ import 'package:alif/utils/style/colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class CustomCategoryCard extends StatelessWidget {
-  const CustomCategoryCard({super.key, required this.type});
+class CustomTypeCard extends StatelessWidget {
+  const CustomTypeCard({super.key, required this.type});
   final ServiceTypeModel? type;
 
   @override
@@ -63,7 +63,8 @@ class CustomCategoryCard extends StatelessWidget {
           Padding(
             padding: EdgeInsetsDirectional.symmetric(vertical: height * 0.0075),
             child: InkWell(
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, '/type', arguments: type),
               borderRadius: BorderRadius.circular(18),
               child: Center(
                 child: Text(

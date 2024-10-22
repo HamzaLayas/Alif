@@ -205,13 +205,10 @@ class SearchScreen extends StatelessWidget {
               suffixIcon: InkWell(
                 onTap: () => _openBottomSheet(context),
                 borderRadius: BorderRadius.circular(50),
-                child: Transform.flip(
-                  flipX: true,
-                  child: Icon(
-                    AlifIcons.filter,
-                    size: 40,
-                    color: AppColors.surface,
-                  ),
+                child: Icon(
+                  AlifIcons.filter,
+                  size: 40,
+                  color: AppColors.surface,
                 ),
               ),
               prefixIconConstraints: BoxConstraints(

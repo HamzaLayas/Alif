@@ -22,9 +22,27 @@ class ServiceProvider {
     }
   }
 
+  Future<Response> getFilteredServices() async {
+    try {
+      Response response = await client.get('service/all');
+      return response;
+    } on DioException catch (e) {
+      return e.response!;
+    }
+  }
+
   Future<Response> getServices() async {
     try {
-      Response response = await client.get('service/');
+      Response response = await client.get('service/all');
+      return response;
+    } on DioException catch (e) {
+      return e.response!;
+    }
+  }
+
+  Future<Response> getSavedServices() async {
+    try {
+      Response response = await client.get('favorite/');
       return response;
     } on DioException catch (e) {
       return e.response!;

@@ -9,6 +9,7 @@ import 'package:alif/presentation/notification/notification_screan.dart';
 import 'package:alif/presentation/search/search_screen.dart';
 import 'package:alif/presentation/service_details/service_details_screen.dart';
 import 'package:alif/presentation/splash/splash_screen.dart';
+import 'package:alif/presentation/type/type_screen.dart';
 import 'package:alif/utils/cubits/user_cubit/user_cubit.dart';
 import 'package:alif/utils/dependency_injection.dart';
 import 'package:alif/utils/style/colors.dart';
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
           '/search': (context) => SearchScreen(),
           '/notification': (context) => NotificationScreen(),
           '/service': (context) => ServiceDetailsScreen(),
+          '/type': (context) => TypeScreen(),
         },
         locale: const Locale('ar'),
         supportedLocales: const [

@@ -1,17 +1,15 @@
-# alif
+# Alif Application
 
-A new Flutter project.
+A entertainment/education platform targeting parents to make it easier to find activities for their children.
 
-## Getting Started
+# Instructions
 
-This project is a starting point for a Flutter application.
+The BackEnd is already hosted via vps, 
+so all you need to do is install the app via apk.
 
-A few resources to get you started if this is your first Flutter project:
+alternatively you can use this source code to run the app, 
+use the terminal to execute the commands below:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+flutter pub get
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# Alif
+flutter run

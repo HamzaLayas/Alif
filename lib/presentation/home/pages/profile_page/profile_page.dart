@@ -74,7 +74,7 @@ class ProfilePage extends StatelessWidget {
               CustomSettingsCard(
                 children: [
                   CustomSettingsListTile(
-                    title: "الـمـحـفـظـة",
+                    title: "الـمـعـامـلات",
                     icon: AlifIcons.wallet,
                     onTap: () {},
                   ),
